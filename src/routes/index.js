@@ -1,5 +1,6 @@
 import MainLayout from 'src/layouts/MainLayout/MainLayout';
 import HomeRoute from './Home';
+import Page from './Page';
 import NotFound from './NotFound';
 
 export const createRoutes = store => ({
@@ -12,6 +13,7 @@ export const createRoutes = store => ({
   },
   childRoutes: [
     HomeRoute(store),
+    Page(store),
     NotFound(store)
   ]
 });
