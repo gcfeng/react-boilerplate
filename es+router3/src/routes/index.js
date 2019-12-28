@@ -1,5 +1,6 @@
 import App from './App';
 import Home from './Home';
+import About from './About';
 
 export default store => ({
   path: '/',
@@ -9,5 +10,8 @@ export default store => ({
       replace('/home');
     }
   },
-  childRoutes: [Home(store)]
+  childRoutes: [
+    Home(store),
+    About(store),
+  ]
 });
