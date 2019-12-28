@@ -21,10 +21,12 @@ All available commands:
 | `npm run <script>` | Description |
 |--------------------|-------------|
 | `start` | start dev server, default listen to 8080, support HRM |
-| `start:prod` | start dev server serve files after build |
-| `build:dev:dll` | build development dll |
-| `build:prod:dll` | build production dll |
-| `build:prod` | build project and output to `dist/` |
+| `format`| format code with prettier |
+| `server`| start dev server serve files after build |
+| `test`  | run tests |
+| `build` | build project and output to `dist/` |
+| `build:dll:dev` | build development dll |
+| `build:dll:prod`| build production dll |
 
 ## Project structure
 ```
