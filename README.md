@@ -1,4 +1,4 @@
 # React Template
 
-> Template collection of react application
+> Boilerplate collection of react application
 

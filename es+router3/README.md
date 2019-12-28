@@ -36,12 +36,12 @@ All available commands:
         |- PageA
           |- __tests__
           |- assets               # Images, fonts and so on
-          |- components           # PageA's components
-          |- containers           # PageA's containers
-          |- models               # PageA's redux models
+          |- PageA.js             # PageA's component
+          |- PageAContainer.js    # PageA's container
+          |- model.js             # PageA's redux model  
           |- index.js             # PageA's entry
         |- PageB
-    |- models                     # Redux models
+    |- models                     # Global Redux models
     |- services                   # Handle module service logic
     |- utils                      # Utility methods
     |- styles                     # Global styles

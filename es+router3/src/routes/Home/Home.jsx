@@ -1,5 +1,5 @@
 import React from 'react';
-import Logo from '../assets/logo.svg';
+import Logo from './assets/logo.svg';
 import styles from './Home.module.less';
 
 export default class Home extends React.Component {

@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
-import model from '../models/home';
-import Home from '../components/Home';
+import model from './model';
+import Home from './Home';
 
 const mapStateToProps = state => ({
   ...state[model.namespace]
