@@ -8,7 +8,7 @@ module.exports = webpackMerge(webpackConfig, {
   devServer: {
     host: '0.0.0.0',
     port: env.port,
-    contentBase: [paths.appBuild, paths.appDll],
+    contentBase: [paths.appBuild, paths.appDll, paths.appPublic],
     historyApiFallback: true,
     hot: true,
     disableHostCheck: true,
