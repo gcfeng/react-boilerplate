@@ -157,7 +157,8 @@ module.exports = {
     }
   },
   resolve: {
-    modules: [paths.appSrc, paths.appNodeModules],
+    // https://github.com/babel/babel/issues/10036
+    modules: [paths.appSrc, 'node_modules'],
     extensions: ['.js', '.jsx', '.json'],
     alias: {
       src: paths.appSrc
