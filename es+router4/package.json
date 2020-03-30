@@ -1,7 +1,7 @@
 {
-  "name": "react-template",
+  "name": "react-boilerplate",
   "version": "1.0.0",
-  "description": "A template for react + redux + webpack",
+  "description": "Boilerplate for react + redux + webpack",
   "scripts": {
     "start": "npm run build:dll:dev && cross-env NODE_ENV=development webpack-dev-server --config config/webpack.dev.conf.js",
     "format": "prettier --write \"{src,config}/**/*.{js,jsx,ts,tsx,json,css,scss,md}\"",
@@ -35,10 +35,12 @@
     "@testing-library/user-event": "^8.0.2",
     "@typescript-eslint/eslint-plugin": "^2.13.0",
     "@typescript-eslint/parser": "^2.13.0",
+    "address": "^1.1.2",
     "babel-eslint": "^10.0.3",
     "babel-loader": "^8.0.6",
     "babel-preset-react-app": "^9.1.0",
     "case-sensitive-paths-webpack-plugin": "^2.2.0",
+    "chalk": "^3.0.0",
     "clean-webpack-plugin": "^3.0.0",
     "compression": "^1.7.4",
     "connect-history-api-fallback": "^1.6.0",
@@ -65,6 +67,7 @@
     "less": "^3.10.3",
     "less-loader": "^5.0.0",
     "lint-staged": "^9.5.0",
+    "log-update": "^4.0.0",
     "mini-css-extract-plugin": "^0.9.0",
     "optimize-css-assets-webpack-plugin": "^5.0.3",
     "postcss-flexbugs-fixes": "^4.1.0",
@@ -79,8 +82,7 @@
     "webpack": "^4.41.4",
     "webpack-cli": "^3.3.10",
     "webpack-dev-server": "^3.10.1",
-    "webpack-merge": "^4.2.2",
-    "webpackbar": "^4.0.0"
+    "webpack-merge": "^4.2.2"
   },
   "browserslist": [
     ">1%",

@@ -1,7 +1,7 @@
 {
-  "name": "react-template",
+  "name": "react-boilerplate",
   "version": "1.0.0",
-  "description": "A template for react + redux + webpack",
+  "description": "Boilerplate for react + redux + webpack",
   "scripts": {
     "start": "npm run build:dll:dev && cross-env NODE_ENV=development webpack-dev-server --config config/webpack.dev.conf.js",
     "format": "prettier --write \"{src,config}/**/*.{js,jsx,ts,tsx,json,css,scss,md}\"",

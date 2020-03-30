@@ -9,10 +9,10 @@ const ForkTsCheckerWebpackPlugin = require('react-dev-utils/ForkTsCheckerWebpack
 const CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
-const WebpackBar = require('webpackbar');
 const CopyPlugin = require('copy-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const postcssNormalize = require('postcss-normalize');
+const ProgressBar = require('./plugins/progressBar');
 const env = require('./env');
 const paths = require('./paths');
 const dll = require('./dll');
@@ -318,9 +318,9 @@ module.exports = {
   },
   target: 'web',
   plugins: [
-    new WebpackBar({
-      name: `🐶 ${pkg.name}`,
-      color: '#6871E6'
+    new ProgressBar({
+      name: pkg.name,
+      devServer: isEnvDevelopment
     }),
     // Clean dist
     !isEnvDevelopment && new CleanWebpackPlugin(),

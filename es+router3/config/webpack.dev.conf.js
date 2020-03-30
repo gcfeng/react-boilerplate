@@ -10,6 +10,7 @@ module.exports = webpackMerge(webpackConfig, {
     port: env.port,
     contentBase: [paths.appBuild, paths.appDll, paths.appPublic],
     historyApiFallback: true,
+    proxy: env.proxy,
     hot: true,
     disableHostCheck: true,
     compress: true,
@@ -17,12 +18,7 @@ module.exports = webpackMerge(webpackConfig, {
       warnings: false,
       errors: true
     },
-    stats: {
-      assets: false,
-      children: true,
-      chunks: false,
-      modules: false,
-      chunkModules: false
-    }
+    logLevel: 'silent',
+    clientLogLevel: 'silent'
   }
 });

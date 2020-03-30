@@ -1,8 +1,8 @@
 const path = require('path');
 const webpack = require('webpack');
-const WebpackBar = require('webpackbar');
 const TerserPlugin = require('terser-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const ProgressBar = require('./plugins/progressBar');
 const paths = require('./paths');
 const env = require('./env');
 const dll = require('./dll');
@@ -30,14 +30,13 @@ module.exports = {
     ]
   },
   plugins: [
-    new WebpackBar({
-      name: `🐶 ${pkg.name} dll`
-    }),
+    new ProgressBar({ name: `${pkg.name} dll` }),
     new CleanWebpackPlugin(),
     new webpack.DefinePlugin(env.stringified),
     new webpack.DllPlugin({
       name: '[name]', // Should be same with output.library
       path: path.resolve(paths.appDll, '[name].manifest.json')
     })
-  ]
+  ],
+  stats: 'none'
 };

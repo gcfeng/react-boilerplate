@@ -1,11 +1,11 @@
-# React Template
+# React Boilerplate
 
-> A template with react + redux + react-router3 + webpack4
+> Boilerplate with react + redux + react-router3 + webpack4
 
 ## Installation
 ```bash
-$ git clone https://github.com/gcfeng/react-template.git
-$ cp react-template/<template-name>/* <my-project-name>
+$ git clone https://github.com/gcfeng/react-boilerplate.git
+$ cp react-boilerplate/<template-name>/* <my-project-name>
 $ cd <my-project-name>
 $ npm install
 ```
