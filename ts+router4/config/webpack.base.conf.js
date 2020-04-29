@@ -1,8 +1,6 @@
-const path = require('path');
 const webpack = require('webpack');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const HtmlWebpackTagsPlugin = require('html-webpack-tags-plugin');
 const InlineChunkHtmlPlugin = require('react-dev-utils/InlineChunkHtmlPlugin');
 const WatchMissingNodeModulesPlugin = require('react-dev-utils/WatchMissingNodeModulesPlugin');
 const ForkTsCheckerWebpackPlugin = require('react-dev-utils/ForkTsCheckerWebpackPlugin');
@@ -12,10 +10,12 @@ const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const postcssNormalize = require('postcss-normalize');
-const ProgressBar = require('./plugins/progressBar');
+const address = require('address');
+const chalk = require('chalk');
+const WebpackBar = require('webpackbar');
+const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
 const env = require('./env');
 const paths = require('./paths');
-const dll = require('./dll');
 const pkg = require(paths.appPackageJson);
 
 const NODE_ENV = process.env.NODE_ENV;
@@ -318,9 +318,15 @@ module.exports = {
   },
   target: 'web',
   plugins: [
-    new ProgressBar({
-      name: pkg.name,
-      devServer: isEnvDevelopment
+    new WebpackBar(),
+    isEnvDevelopment && new FriendlyErrorsWebpackPlugin({
+      compilationSuccessInfo: {
+        messages: [
+          'App running at: ',
+          `    - Local:   ${chalk.cyan(`http://localhost:${env.port}/`)}`,
+          `    - Network: ${chalk.cyan(`http://${address.ip()}:${env.port}/`)}`
+        ]
+      }
     }),
     // Clean dist
     !isEnvDevelopment && new CleanWebpackPlugin(),
@@ -391,15 +397,6 @@ module.exports = {
           to: paths.appBuild
         }
       ]),
-    // Inject dll to html
-    new HtmlWebpackTagsPlugin({
-      append: false,
-      tags: [
-        isEnvDevelopment
-          ? { path: '', glob: '*.dll.js', globPath: paths.appDll }
-          : { path: '', glob: '*.min.js', globPath: paths.appDll }
-      ]
-    }),
     // TypeScript type checking
     new ForkTsCheckerWebpackPlugin({
       async: isEnvDevelopment,
@@ -412,17 +409,7 @@ module.exports = {
         '!**/?(*.)(spec|test).*',
       ],
     })
-  ]
-    .concat(
-      // Dll
-      Object.keys(dll).map(
-        dllName =>
-          new webpack.DllReferencePlugin({
-            manifest: require(path.resolve(paths.appDll, `${dllName}.manifest.json`))
-          })
-      )
-    )
-    .filter(Boolean),
+  ].filter(Boolean),
   // Some libraries import Node modules but don't use them in the browser.
   // Tell Webpack to provide empty mocks for them so importing them works.
   node: {
@@ -434,5 +421,6 @@ module.exports = {
     net: 'empty',
     tls: 'empty',
     child_process: 'empty'
-  }
+  },
+  stats: 'errors-only'
 };
